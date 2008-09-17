@@ -17,7 +17,10 @@ eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61
 %64%64%72%65%73%73%20%64%6f%74%20%63%6f%6d%3c
 %2f%61%3e%27%29'))
 
-which writes "email at address dot com" into your post or page.
+which writes "email at address dot com" into your post or page.  
+
+There is also an option for adding text similar to email [at] address [dot] com if javascript is not
+available.
 
 If you want to generate this code with out using this plugin (for a page template for example) 
 go to <a href="http://blueberryware.net/email/">Email Spam Protection Code Creator</a>
