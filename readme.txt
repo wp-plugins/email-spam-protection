@@ -3,7 +3,7 @@ Contributors: ah125i
 Tags: email, spam
 Requires at least: 2.6
 Tested up to: 2.6
-Stable tag: 1.1
+Stable tag: 1.11
 
 This plugin will convert an email address to javascript to prevent spam emails.
 
@@ -46,8 +46,9 @@ You can now enable graceful Javascript degradation, see the settings page for mo
 
 == Screenshots ==
 
-1. email at address dot com
+email at address dot com
 
 == Arbitrary section ==
 
-Version 1.1 adds graceful JavaScript degradation.
+1. Version 1.1 adds graceful JavaScript degradation.
+1. Version 1.11 fixes bug where JavaScript degradation did not work properly with multiple emails.

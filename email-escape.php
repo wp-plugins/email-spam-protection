@@ -30,6 +30,9 @@ class emailEscape {
 	function init() {
 		add_option('email_js_degrade', false);
 		$this->degrade = get_option('email_js_degrade');
+		if ( $this->degrade ) {
+			wp_enqueue_script('jquery');
+		}
 		add_shortcode('escapeemail', array($this, 'run'));
 		add_action('admin_menu', array($this, 'link'));
 	}
@@ -64,9 +67,9 @@ class emailEscape {
 			$dot = ' ' . $wrap[0] . 'dot' . $wrap[1] . ' ';
 			$text = str_replace('@', $at, $email);
 			$text = str_replace('.', $dot, $text);
-			$html = '<span id="email_text">' . $text . '</span>'
+			$html = '<span class="email_text">' . $text . '</span>'
 				  . '<script type="text/javascript"> // <!-- ' . PHP_EOL
-				  . 'document.getElementById("email_text").innerHTML = ""' . PHP_EOL
+				  . 'jQuery(".email_text").each(function() { this.innerHTML = "" } )' . PHP_EOL
 				  . ' // --> </script>';
 			$out .= $html;
 		}
