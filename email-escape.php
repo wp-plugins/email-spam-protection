@@ -4,7 +4,7 @@ Plugin Name: Email Spam Protection
 Plugin URI: http://blueberryware.net/2008/09/14/email-spam-protection/
 Description: Converts emails provided in the shortcode [escapeemail email="email@address.com"] to urlencoded javascript.  Based on email spam protection on Twitter's contact page. If you found the plugin helpful please rate it <a href="http://wordpress.org/extend/plugins/email-spam-protection/">here</a>.  You may enable graceful Javascript degradation in the <a href="options-general.php?page=email-escape">settings page</a>.  
 Author: Adam Hunter
-Version: 1.1
+Version: 1.11
 Author URI: http://blueberryware.net
 */
 class emailEscape {
