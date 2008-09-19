@@ -3,7 +3,7 @@ Contributors: ah125i
 Tags: email, spam
 Requires at least: 2.6
 Tested up to: 2.6.2
-Stable tag: 1.2
+Stable tag: 1.20
 
 This plugin will convert an email address to javascript to prevent spam emails.
 
