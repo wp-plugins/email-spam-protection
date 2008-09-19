@@ -2,8 +2,8 @@
 Contributors: ah125i
 Tags: email, spam
 Requires at least: 2.6
-Tested up to: 2.6
-Stable tag: 1.11
+Tested up to: 2.6.2
+Stable tag: 1.2
 
 This plugin will convert an email address to javascript to prevent spam emails.
 
@@ -25,6 +25,7 @@ available.
 If you want to generate this code with out using this plugin (for a page template for example) 
 go to <a href="http://blueberryware.net/email/">Email Spam Protection Code Creator</a>
 
+This will also escape emails used in comments if they use this shortcode. It will ONLY enable this shortcode for comments for security purposes.
 
 == Installation ==
 

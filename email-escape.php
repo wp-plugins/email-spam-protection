@@ -2,9 +2,9 @@
 /*
 Plugin Name: Email Spam Protection
 Plugin URI: http://blueberryware.net/2008/09/14/email-spam-protection/
-Description: Converts emails provided in the shortcode [escapeemail email="email@address.com"] to urlencoded javascript.  Based on email spam protection on Twitter's contact page. If you found the plugin helpful please rate it <a href="http://wordpress.org/extend/plugins/email-spam-protection/">here</a>.  You may enable graceful Javascript degradation in the <a href="options-general.php?page=email-escape">settings page</a>.  
+Description: Converts emails provided in the shortcode [escapeemail email="email@address.com"] to urlencoded javascript.  Based on email spam protection on Twitter's contact page. If you found the plugin helpful please rate it <a href="http://wordpress.org/extend/plugins/email-spam-protection/">here</a>.  You may enable graceful Javascript degradation in the <a href="options-general.php?page=email-escape">settings page</a>. This will also escape emails used in comments if they use this shortcode. It will ONLY enable this shortcode for comments for security purposes.
 Author: Adam Hunter
-Version: 1.11
+Version: 1.2
 Author URI: http://blueberryware.net
 */
 class emailEscape {
@@ -34,7 +34,26 @@ class emailEscape {
 			wp_enqueue_script('jquery');
 		}
 		add_shortcode('escapeemail', array($this, 'run'));
+		add_filter('comment_text', array($this, 'comments'));
 		add_action('admin_menu', array($this, 'link'));
+	}
+	
+	/**
+	 * Removes all registered shortcodes, adds the emailescape shortcode, runs, 
+	 * then restores all other shortcodes.  This is meant for applying a shortcode to 
+	 * comment_text, but not allowing any other shortcodes that may be registered to run
+	 *
+	 * @param string $content
+	 * @return string
+	 */
+	function comments($content) {
+		global $shortcode_tags;
+		$saved_shortcodes = $shortcode_tags;
+		$shortcode_tags = array('escapeemail' => array($this, 'run'));
+		$pattern = get_shortcode_regex();
+		$return = preg_replace_callback('/'.$pattern.'/s', 'do_shortcode_tag', $content);
+		$shortcode_tags = $saved_shortcodes;
+		return $return;
 	}
 		/**
 	 * Creates url encoded javascript powered link to email address
